@@ -32,7 +32,7 @@ function on_page_load(dummy_url, cookie_url) {
     let consent = get_cookie('cookie_consent')
     
     switch (consent) {
-        case true:
+        case 'consent':
             console.log('cookies were consented')
             break
         
@@ -41,10 +41,13 @@ function on_page_load(dummy_url, cookie_url) {
             console.log('asking for cookie consent')
             show_cookie_banner(cookie_url)
 
-        case false:
+        case 'decline':
             console.log('disabling embeds')
             // disable all iframes
             $('iframe').each(function(index, iframe) {
+                if (iframe.id === 'cookiebanner') {
+                    return
+                }
                 disable(iframe, dummy_url)
             })
             break
@@ -55,23 +58,14 @@ function on_page_load(dummy_url, cookie_url) {
 function show_cookie_banner(cookie_url) {
     let iframe = $('<iframe>', {
         src: cookie_url,
-        id: 'cookiebanner',
-        css: {
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            width: '100vw',
-            height: '80px',
-            border: 'none',
-            'z-index': 10000
-        }
+        id: 'cookiebanner'
     })
     $('body').append(iframe)
 }
 
 ///
 function on_cookie_consent() {
-    set_cookie('cookie_consent', true)
+    set_cookie('cookie_consent', 'consent')
     // enable all iframes
     $('iframe').each(function(index, iframe) {
         enable(iframe)
@@ -80,6 +74,6 @@ function on_cookie_consent() {
 }
 
 function on_cookie_decline() {
-    set_cookie('cookie_consent', false)
+    set_cookie('cookie_consent', 'decline')
     $('#cookiebanner').remove()
 }

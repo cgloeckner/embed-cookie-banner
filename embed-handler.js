@@ -84,4 +84,4 @@ function on_cookie_decline() {
     $('#cookiebanner').remove()
 }
 
-on_page_load('/cookie-banner.html')
+on_page_load('/example-banner.html', '/example-banner.html')

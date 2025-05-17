@@ -22,8 +22,11 @@ We do not use cookies ourselves but the embedded players do. If you want to use 
 
 Add to each of your pages' headers:
 ```html
-<script src="path-to-the-embed-handler.js"></script>
+<script src="path-to-embed-handler.js"></script>
 ```
+(copy it to your server manually, use a git submodule or anything else)
+
+Make sure to call the page checker as the document is ready:
 ```javascript
 $(document).ready(function() {
     on_page_load('path-to-info.html', 'path-to-banner.html')

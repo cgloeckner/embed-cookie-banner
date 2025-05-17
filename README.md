@@ -32,3 +32,18 @@ $(document).ready(function() {
     on_page_load('path-to-info.html', 'path-to-banner.html')
 })
 ```
+
+## 3. Style your #cookiebanner
+
+Like
+```css
+iframe#cookiebanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    border: none;
+    z-index: 100;
+}
+```

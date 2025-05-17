@@ -44,7 +44,7 @@ function on_page_load(dummy_url, cookie_url) {
         case 'decline':
             console.log('disabling embeds')
             // disable all iframes
-            $('iframe').each(function(index, iframe) {
+            $('iframe, embed').each(function(index, iframe) {
                 if (iframe.id === 'cookiebanner') {
                     return
                 }
@@ -67,7 +67,7 @@ function show_cookie_banner(cookie_url) {
 function on_cookie_consent() {
     set_cookie('cookie_consent', 'consent')
     // enable all iframes
-    $('iframe').each(function(index, iframe) {
+    $('iframe, embed').each(function(index, iframe) {
         enable(iframe)
     })
     $('#cookiebanner').remove()

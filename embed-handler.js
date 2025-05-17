@@ -83,5 +83,3 @@ function on_cookie_decline() {
     set_cookie('cookie_consent', false)
     $('#cookiebanner').remove()
 }
-
-on_page_load('/example-banner.html', '/example-banner.html')

@@ -2,7 +2,7 @@
 
 Dependecy: jQuery
 
-All embeds (iframes) will be redirected to a custom cookie info. If the cookie-banner is consented, they'll be reset to their original sources.
+All embeds (`iframe` and `embed`) will be redirected to a custom cookie info. If the cookie-banner is consented, they'll be reset to their original sources.
 
 ## 1. Create Custom Cookie Info and Banner Files
 
@@ -16,6 +16,7 @@ Example Cookie Banner:
 We do not use cookies ourselves but the embedded players do. If you want to use them, please consent all cookies. Accepting essential cookies will disable the players.<br>
 <button onClick="window.parent.on_cookie_decline()">Accept Essential Only</button>
 <button onClick="window.parent.on_cookie_consent()">Accept All Cookies</button>
+See <a href="/privacy" target="_top">Privacy Notes</a> for further details.
 ```
 
 ## 2. Include embed-handler

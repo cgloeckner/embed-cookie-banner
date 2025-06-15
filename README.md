@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 Like
 ```css
-iframe#cookiebanner {
+#cookiebanner {
     position: fixed;
     bottom: 0;
     left: 0;

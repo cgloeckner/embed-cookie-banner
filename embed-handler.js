@@ -45,9 +45,6 @@ function on_page_load(dummy_url, cookie_url) {
             console.log('disabling embeds')
             // disable all iframes
             $('iframe, embed').each(function(index, iframe) {
-                if (iframe.id === 'cookiebanner') {
-                    return
-                }
                 disable(iframe, dummy_url)
             })
             break
@@ -56,11 +53,10 @@ function on_page_load(dummy_url, cookie_url) {
 
 /// Show cookie banner
 function show_cookie_banner(cookie_url) {
-    let iframe = $('<iframe>', {
-        src: cookie_url,
-        id: 'cookiebanner'
+    $.get(cookie_url, function(html) {
+        let div = $('<div>', {id: 'cookiebanner'}).html(html)
+        $('body').append(div)
     })
-    $('body').append(iframe)
 }
 
 ///

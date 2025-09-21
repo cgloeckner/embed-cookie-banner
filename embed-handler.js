@@ -8,8 +8,10 @@ function get_cookie(key) {
 }
 
 /// Set cookie key-value pair for some days (default: 10 years) and the given path
-function set_cookie(key, value, days=365, path='/') {
-    let expires = new Date(Date.now() + days * 24 * 3600 * 1000).toUTCString();
+function set_cookie(key, value, days, path) {
+    days = typeof days === "number" ?  days : 365;
+    path = path || "/";
+    let expires = new Date(Date.now() + days * 864e5).toUTCString();
     document.cookie = `${key}=${encodeURIComponent(value)}; expires=${expires}; path=${path}`;
 }
 

@@ -9,8 +9,6 @@ function get_cookie(key) {
 
 /// Set cookie key-value pair for some days (default: 10 years) and the given path
 function set_cookie(key, value, days, path) {
-    days = typeof days === "number" ?  days : 365;
-    path = path || "/";
     let expires = new Date(Date.now() + days * 864e5).toUTCString();
     document.cookie = `${key}=${encodeURIComponent(value)}; expires=${expires}; path=${path}`;
 }
@@ -63,7 +61,7 @@ function show_cookie_banner(cookie_url) {
 
 ///
 function on_cookie_consent() {
-    set_cookie('cookie_consent', 'consent')
+    set_cookie('cookie_consent', 'consent', 365, '/')
     // enable all iframes
     $('iframe, embed').each(function(index, iframe) {
         enable(iframe)
@@ -72,6 +70,6 @@ function on_cookie_consent() {
 }
 
 function on_cookie_decline() {
-    set_cookie('cookie_consent', 'decline')
+    set_cookie('cookie_consent', 'decline', 365, '/')
     $('#cookiebanner').remove()
 }
